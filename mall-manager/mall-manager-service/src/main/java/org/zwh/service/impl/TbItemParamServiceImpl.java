@@ -94,6 +94,19 @@ public class TbItemParamServiceImpl implements TbItemParamService {
 		}
 		return FjnyResult.ok();
 	}
+	
+	
+	@Override
+	public FjnyResult editItemParam(Long id) {
+		// TODO Auto-generated method stub
+		TbItemParam selectByPrimaryKey = tbItemParamMapper.selectByPrimaryKey(id);
+		return FjnyResult.ok(selectByPrimaryKey);
+	}
+	@Override
+	public FjnyResult updateParamItem(long cid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 }

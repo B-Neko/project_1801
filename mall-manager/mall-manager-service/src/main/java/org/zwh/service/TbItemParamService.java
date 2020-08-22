@@ -16,6 +16,10 @@ public interface TbItemParamService {
 
 		
 	public FjnyResult deleteItemParam(List<Long> ids);
+	
+	public FjnyResult editItemParam(Long id);
 
+	
+	public FjnyResult updateParamItem(long cid);
 
 }

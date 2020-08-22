@@ -47,4 +47,21 @@ public class TbItemParamController {
 		System.out.println("删除商品ids:"  + ids);
 		return tbItemParamService.deleteItemParam(ids);
 	}
+	
+	//查询编辑的信息
+	@RequestMapping("/query/itemparam-desc/{id}")
+	@ResponseBody
+	public FjnyResult editItemParam(@PathVariable Long id) {
+		System.out.println("需要更改的商品的id"+ id);
+		return tbItemParamService.editItemParam(id);
+	}
+	
+	//更新商品规格
+	@RequestMapping("/update/{cid}")
+	@ResponseBody
+	public FjnyResult updateItemParam(@PathVariable Long cid) {
+		System.out.println("需要更改商品规格的id"+ cid);
+		return tbItemParamService.updateParamItem(cid);
+	}
+	
 }

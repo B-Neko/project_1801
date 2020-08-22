@@ -6,6 +6,10 @@
 	</div>
 	<br/>
 	<br/>
+	<div id="itemEditWindow" class="easyui-window" title="商品编辑"
+		style="width: 80%; height: 80%;"
+		data-options="iconCls:'icon-save',modal:true,closed:'true',href:'/item-param-edit'">
+	</div>
 </div>
 	<script type="text/javascript">
 		$('#itemParamList').datagrid({
@@ -20,10 +24,49 @@
 						handler: function(){
 							TT.createWindow({url:'item-param-add'});
 						}
+					
 					},{
 						text: '编辑',
 						iconCls: 'fa fa-edit',
-						handler: function(){}
+						handler: function(){
+							var ids = getSelections();
+							//判断如果未选定,不执行,提示
+							if(ids.length == 0){
+								$.messager.alert('提示',"必须选择一个商品");
+								return;
+							}
+							//如果选的多行数据,提示,只能选择一个商品
+							if(ids.indexOf(',') > 0){
+								$.messager.alert('提示',"只能选择一个商品");
+								return;
+							}
+							
+							
+							//进行数据回显
+							$('#itemEditWindow').window({
+								
+								onLoad:function(){ 
+									var data = $("#itemParamList").datagrid("getSelections")[0];
+									$('#itemParamEditTable').form('load',data); 
+									
+									//将商品描述进行显示
+									$.getJSON("item/param/query/itemparam-desc/"+data.id,function(result){
+										if(result.status == 200){
+											//itemEditEditor.html(result.data.itemDesc);
+											itemParamEdit.html(result.data)
+										}
+									});
+									
+									
+									TT.init({
+										"itemCatId" : data.itemCatId,
+										"paramData" : data.paramData,
+										fun:function(node){}
+									});
+								} 
+							}).window('open');
+						}
+					
 					},{
 						text: '删除',
 						iconCls: 'fa fa-remove',
@@ -38,7 +81,7 @@
 								if(r) {
 									//进行post跟服务端交互
 									var params = {"ids":ids};
-									$.post("/item/delete",params,function(data){
+									$.post("/item/delete2",params,function(data){
 										if(data.status == 200){
 											$.messager.alert('提示','删除商品规格成功!',undefined,function(){
 												$("#itemParamList").datagrid("reload");
