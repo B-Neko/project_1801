@@ -54,7 +54,7 @@ var itemParamEdit;
 			fun:function(node){
 			$(".addGroupTr").hide().find(".param").remove();
 				//  判断选择的目录是否已经添加过规格
-			  $.getJSON("/item/param/query/itemcatid/" + node.id,function(data){
+			  $.getJSON("/mall-manager-web/item/param/query/itemcatid/" + node.id,function(data){
 				  if(data.status == 200 && data.data){
 					  $.messager.alert("提示", "该类目已经添加，请选择其他类目。", undefined, function(){
 						 $("#itemParamEditTable .selectItemCat").click();
@@ -105,7 +105,7 @@ var itemParamEdit;
 					});					
 				}
 			});
-			var url = "/item/param/update/"+$("#itemParamEditTable [name=cid]").val();
+			var url = "${pageContext.request.contextPath}/item/param/update/"+$("#itemParamEditTable [name=cid]").val();
 			$.post(url,{"paramData":JSON.stringify(params)},function(data){
 				if(data.status == 200){
 					$.messager.alert('提示','更新商品规格成功!',undefined,function(){

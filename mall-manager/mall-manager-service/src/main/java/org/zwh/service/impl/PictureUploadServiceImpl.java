@@ -2,6 +2,7 @@ package org.zwh.service.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.ibatis.reflection.ExceptionUtil;
 import org.joda.time.DateTime;
@@ -14,13 +15,30 @@ import org.zwh.utils.PictureResult;
 
 @Service
 public class PictureUploadServiceImpl implements PictureUploadService {
-	String host="127.0.0.1";
-	int port =21;
-	String username = "zwh";
-	String password = "123456";
 	
+	
+	static String host;
+	static int port;
+	static String username;
+	static String password;
+	
+	public void readProperties() {
+		Properties properties=new Properties();
+		InputStream in = PictureUploadServiceImpl.class.getClassLoader().getResourceAsStream("ftp.properties");
+		try {
+			properties.load(in);
+			host = properties.getProperty("FTP_ADDRESS");
+			port = Integer.parseInt(properties.getProperty("FTP_PORT"));
+			username = properties.getProperty("FTP_USER_NAME");
+			password = properties.getProperty("westos321");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
 	@Override
 	public PictureResult pictureUpload(MultipartFile uploadfile) {
+		readProperties();
 		PictureResult result = new PictureResult();
 		try {
 			//判断是否为空
@@ -37,7 +55,7 @@ public class PictureUploadServiceImpl implements PictureUploadService {
 			String filename = IDUtils.genImageName()+ext;		
 			InputStream input = uploadfile.getInputStream();
 			FtpUtil.uploadFile(host,port,username,password,"/",filePath,filename,input);
-			String url = "http://localhost:8383"+filePath+"/"+filename;
+			String url = "http://60.205.152.139:8088"+filePath+"/"+filename;
 			result.setError(0);
 			result.setUrl(url);		
 

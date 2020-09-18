@@ -68,6 +68,12 @@
 					<li id = "item-param-list"  data-url='item-param-list'>规则参数</li>
 				</ul>
 			</div>
+			<div title="网站内容管理" data-options="iconCls:'fa fa-table'">
+				<ul>
+					<li id = "icontent-category" data-url='${pageContext.request.contextPath}/content-category'>内容分类管理</li>
+					<li id = "content"  data-url='${pageContext.request.contextPath}/content'>内容管理</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div data-options="region:'center'" style="padding-top: 2px;">

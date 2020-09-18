@@ -60,7 +60,7 @@
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>2.2</version>
 					<configuration>
-						<port>8989</port>
+ 						<port>8088</port>
 						<path>/</path>
 					</configuration>
 				</plugin>
