@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<link href="/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<link href="/mall-manager-web/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <style type="text/css">
@@ -63,7 +63,7 @@
 		</div>
 		<div class="form-item params hide">
 			<label for="" class="label-top">商品规格:</label>
-			 <div></div>
+			 <div></div>x
 		</div>
 		<input type="hidden" name="itemParams"/>
 			<div class="form-item">
@@ -123,7 +123,7 @@
 		
 		//ajax的post方式提交表单
 		alert($("#itemAddForm").serialize());
-		$.post("/item/save",$("#itemAddForm").serialize(), function(data){
+		$.post("/mall-manager-web/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$("#dgTbItem").datagrid("reload");
 				$.messager.alert('操作成功', '恭喜您添加产品成功', 'warning', function() {

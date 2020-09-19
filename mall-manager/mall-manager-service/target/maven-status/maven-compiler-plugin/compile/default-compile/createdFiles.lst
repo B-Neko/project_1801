@@ -1,7 +1,0 @@
-org\zwh\service\TbItemCatService.class
-org\zwh\service\TbItemService.class
-org\zwh\service\TbItemParamService.class
-org\zwh\service\PictureUploadService.class
-org\zwh\service\TbItemDescService.class
-org\zwh\service\TbItemParamItemService.class
-org\zwh\service\impl\PictureUploadServiceImpl.class

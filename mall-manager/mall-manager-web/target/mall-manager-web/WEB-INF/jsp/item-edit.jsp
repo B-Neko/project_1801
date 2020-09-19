@@ -95,7 +95,7 @@
 				$("#itemEditForm").serialize()
 				//将表单序列号为key - value形式的字符串
 				alert($("#itemEditForm").serialize());
-				$.post("/item/update", $("#itemEditForm").serialize(), function(
+				$.post("/mall-manager-web/item/update", $("#itemEditForm").serialize(), function(
 						data) {
 					if (data.status == 200) {
 						$("#dgTbItem").datagrid("reload");

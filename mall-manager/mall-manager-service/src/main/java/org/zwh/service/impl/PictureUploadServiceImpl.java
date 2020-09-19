@@ -17,28 +17,28 @@ import org.zwh.utils.PictureResult;
 public class PictureUploadServiceImpl implements PictureUploadService {
 	
 	
-	static String host;
-	static int port;
-	static String username;
-	static String password;
+	String host = "60.205.152.139";
+	int port = 21;
+	String username = "rrrxr";
+	String password = "westos321";
 	
-	public void readProperties() {
-		Properties properties=new Properties();
-		InputStream in = PictureUploadServiceImpl.class.getClassLoader().getResourceAsStream("ftp.properties");
-		try {
-			properties.load(in);
-			host = properties.getProperty("FTP_ADDRESS");
-			port = Integer.parseInt(properties.getProperty("FTP_PORT"));
-			username = properties.getProperty("FTP_USER_NAME");
-			password = properties.getProperty("westos321");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-	}
+//	public void readProperties() {
+//		Properties properties=new Properties();
+//		InputStream in = PictureUploadServiceImpl.class.getClassLoader().getResourceAsStream("ftp.properties");
+//		try {
+//			properties.load(in);
+//			host = properties.getProperty("FTP_ADDRESS");
+//			port = Integer.parseInt(properties.getProperty("FTP_PORT"));
+//			username = properties.getProperty("FTP_USER_NAME");
+//			password = properties.getProperty("westos321");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	
+//	}
 	@Override
 	public PictureResult pictureUpload(MultipartFile uploadfile) {
-		readProperties();
+		//readProperties();
 		PictureResult result = new PictureResult();
 		try {
 			//判断是否为空
