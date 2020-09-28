@@ -45,7 +45,7 @@
 								var data = $("#dgTbItem").datagrid("getSelections")[0];
 								$('#itemEditForm').form('load',data); 
 								//将商品描述进行显示
-								$.getJSON("/mall-manager-web/item/query/item-desc/"+data.id,function(result){
+								$.getJSON("${pageContext.request.contextPath}/item/query/item-desc/"+data.id,function(result){
 									if(result.status == 200){
 										itemEditEditor.html(result.data.itemDesc);
 									}
@@ -76,7 +76,7 @@
 							if(r) {
 								//进行post跟服务端交互
 								var items = {"ids":ids};
-								$.post("/mall-manager-web/item/delete",items,function(data){
+								$.post("${pageContext.request.contextPath}/item/delete",items,function(data){
 									if(data.status == 200){
 										$.messager.alert('提示','删除商品成功!',undefined,function(){
 											$("#dgTbItem").datagrid("reload");
@@ -102,7 +102,7 @@
 							if(r) {
 								//进行post跟服务端交互
 								var up = {"ids":ids,"status":1};
-								$.post("/mall-manager-web/item/putUp",up,function(data){
+								$.post("${pageContext.request.contextPath}/item/putUp",up,function(data){
 									if(data.status == 200){
 										$.messager.alert('提示','上架成功!',undefined,function(){
 											$("#dgTbItem").datagrid("reload");
@@ -128,7 +128,7 @@
 							if(r) {
 								//进行post跟服务端交互
 								var down = {"ids":ids,"status":2};
-								$.post("/mall-manager-web/item/putDown",down,function(data){
+								$.post("${pageContext.request.contextPath}/item/putDown",down,function(data){
 									if(data.status == 200){
 										$.messager.alert('提示','下架成功!',undefined,function(){
 											$("#dgTbItem").datagrid("reload");

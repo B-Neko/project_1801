@@ -2,7 +2,12 @@ package org.zwh.pojo;
 
 import java.util.Date;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "商品对象类")
 public class TbItem {
+	@ApiModelProperty(value="商品id",name="id")
     private Long id;
 
     private String title;
@@ -18,11 +23,11 @@ public class TbItem {
     private String image;
 
     private Long cid;
-
+    @ApiModelProperty(value="商品状态",name="status")
     private Byte status;
-
+    @ApiModelProperty(value="商品创建时间",name="created")
     private Date created;
-
+    @ApiModelProperty(value="商品更新时间",name="updated")
     private Date updated;
 
     public Long getId() {

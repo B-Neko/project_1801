@@ -123,7 +123,7 @@
 		
 		//ajax的post方式提交表单
 		alert($("#itemAddForm").serialize());
-		$.post("/mall-manager-web/item/save",$("#itemAddForm").serialize(), function(data){
+		$.post("${pageContext.request.contextPath}/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$("#dgTbItem").datagrid("reload");
 				$.messager.alert('操作成功', '恭喜您添加产品成功', 'warning', function() {

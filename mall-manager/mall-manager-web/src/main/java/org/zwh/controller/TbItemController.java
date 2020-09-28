@@ -17,6 +17,13 @@ import org.zwh.utils.EasyUIDataGridResult;
 import org.zwh.utils.EasyUITreeNodeBean;
 import org.zwh.utils.FjnyResult;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
+
+@Api(tags = "商品接口")
 @Controller
 @RequestMapping("/item")
 public class TbItemController {
@@ -27,8 +34,12 @@ public class TbItemController {
 	@Autowired
 	private TbItemDescService tbItemDescService;
 
-	
-	@RequestMapping("/getItem")
+	@ApiOperation(value = "显示商品列表")
+	@ApiImplicitParams({
+		  @ApiImplicitParam(name = "page",value = "当前页",dataType = "Integer",defaultValue = "1",paramType="query"),
+          @ApiImplicitParam(name = "rows",value = "显示个数",dataType = "Integer",defaultValue = "10",paramType="query")
+	})
+	@RequestMapping(value = "/getItem",method=RequestMethod.GET)
 	@ResponseBody
 	public EasyUIDataGridResult getTbItemList(@RequestParam(defaultValue = "1") 
 	Integer page
@@ -36,6 +47,12 @@ public class TbItemController {
 		return tbItemService.getTbItemList(page,rows);
 	}
 
+	@ApiOperation(value = "保存商品信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "tbItem",value = "商品实体类",paramType="query"),
+        @ApiImplicitParam(name = "desc",value = "商品描述",dataType = "String",paramType="query"),
+		@ApiImplicitParam(name = "itemParams",value = "商品规格",dataType = "String",paramType="query")
+	})
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult saveItem(TbItem tbItem,String desc,String itemParams){
@@ -43,6 +60,7 @@ public class TbItemController {
 		return FjnyResult.ok();
 	}
 	
+	@ApiIgnore()
 	@RequestMapping("/cat/list")
 	@ResponseBody
 	public List<EasyUITreeNodeBean> getItemCatList(@RequestParam(value = "id",defaultValue = "0") long parentId) {
@@ -50,35 +68,46 @@ public class TbItemController {
 		return tbItemCatService.getTbItemCatList(parentId);
 	}
 	
-	@RequestMapping("/query/item-desc/{id}")
+	@ApiOperation(value = "根据id查看商品描述")
+	@ApiImplicitParam(name = "id",value = "商品id",dataType = "Long",paramType = "path")
+	@RequestMapping(value = "/query/item-desc/{id}",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult getTbItemDesc(@PathVariable Long id) {
 		return tbItemDescService.getTbResultDesc(id);
 	}
 	
-	@RequestMapping("/update")
+	@ApiOperation(value = "编辑修改商品信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "tbItem",value = "商品实体类",paramType = "query"),
+		@ApiImplicitParam(name = "desc",value = "商品描述",dataType = "String",paramType = "query")
+	})
+	@RequestMapping(value = "/update",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult updateTbItem(TbItem tbItem,String desc) {
 		return tbItemService.updateItem(tbItem, desc);
 	}
 	
-	@RequestMapping("/delete")
+	@ApiOperation(value = "根据id删除商品")
+	@ApiImplicitParam(name = "ids",value = "商品id集合",dataType = "List",paramType = "query")
+	@RequestMapping(value = "/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult deleteTbItem(@RequestParam("ids") List<Long> ids) {
 		return tbItemService.deleteTbItem(ids);
 	}
 	
-	@RequestMapping("/putUp")
+	@ApiOperation(value = "根据id上架商品")
+	@ApiImplicitParam(name = "ids",value = "商品id集合",dataType = "List",paramType = "query")
+	@RequestMapping(value = "/putUp",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult putUpTbItem(@RequestParam("ids") List<Long> ids) {
-
 		return tbItemService.putUpTbItem(ids);
 	}
 	
-	@RequestMapping("/putDown")
+	@ApiOperation(value = "根据id下架商品")
+	@ApiImplicitParam(name = "ids",value = "商品id集合",dataType = "List",paramType = "query")
+	@RequestMapping(value = "/putDown",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult putDownTbItem(@RequestParam("ids") List<Long> ids) {
-
 		return tbItemService.putDownTbItem(ids);
 	}
 

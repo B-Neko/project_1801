@@ -2,27 +2,30 @@ package org.zwh.pojo;
 
 import java.util.Date;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+@ApiModel(value = "内容实体类")
 public class TbContent {
     private Long id;
 
     private Long categoryId;
-
+    @ApiModelProperty(value="内容标题",name="title")
     private String title;
-
+    @ApiModelProperty(value = "内容子标题",name = "subTitle")
     private String subTitle;
-
+    @ApiModelProperty(value = "内容描述",name = "titleDesc")
     private String titleDesc;
-
+    @ApiModelProperty(value = "URL",name = "url")
     private String url;
-
+    @ApiModelProperty(value = "图片",name = "pic")
     private String pic;
-
+    @ApiModelProperty(value = "图片2",name = "pic2")
     private String pic2;
 
     private Date created;
 
     private Date updated;
-
+    @ApiModelProperty(value = "内容",name = "content")
     private String content;
 
     public Long getId() {

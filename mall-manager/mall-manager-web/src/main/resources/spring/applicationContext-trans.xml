@@ -31,7 +31,6 @@
 		</tx:attributes>
 	</tx:advice>
 	<!-- 切面 -->
-	<!-- 切面 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice"
 			pointcut="execution(* org.zwh.service.*.*(..))" />

@@ -50,7 +50,7 @@
 									$('#itemParamEditTable').form('load',data); 
 									
 									//将商品描述进行显示
-									$.getJSON("/mall-manager-web/item/param/query/itemparam-desc/"+data.id,function(result){
+									$.getJSON("${pageContext.request.contextPath}/item/param/query/itemparam-desc/"+data.id,function(result){
 										if(result.status == 200){
 											//itemEditEditor.html(result.data.itemDesc);
 											itemParamEdit.html(result.data)
@@ -81,7 +81,7 @@
 								if(r) {
 									//进行post跟服务端交互
 									var params = {"ids":ids};
-									$.post("/mall-manager-web/item/delete2",params,function(data){
+									$.post("${pageContext.request.contextPath}/item/delete2",params,function(data){
 										if(data.status == 200){
 											$.messager.alert('提示','删除商品规格成功!',undefined,function(){
 												$("#itemParamList").datagrid("reload");
