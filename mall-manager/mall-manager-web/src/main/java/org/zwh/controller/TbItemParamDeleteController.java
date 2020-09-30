@@ -14,7 +14,7 @@ import org.zwh.utils.FjnyResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-@Api(tags = "商品类目中删除方法接口")
+@Api(value =  "商品类目中删除方法接口")
 @Controller
 @RequestMapping("/item")
 public class TbItemParamDeleteController {

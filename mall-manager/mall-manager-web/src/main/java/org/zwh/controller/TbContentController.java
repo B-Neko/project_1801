@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-@Api(tags = "内容接口")
+@Api(value =  "内容接口")
 @Controller
 @RequestMapping("/content/query")
 public class TbContentController {

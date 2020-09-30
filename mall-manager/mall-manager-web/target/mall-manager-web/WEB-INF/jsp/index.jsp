@@ -77,7 +77,7 @@
 			<div title="Swagger-UI文档" data-options="iconCls:'fa fa-table'">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/swagger/index.html">商家接口文档</a></li>
-				<li><a href="http://localhost:8081/swagger-ui.html">apk接口文档</a></li>
+				<li><a href="http://localhost:8088/swagger-ui.html">apk接口文档</a></li>
 			</ul>				
 			</div>
 		</div>

@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import springfox.documentation.annotations.ApiIgnore;
 
-@Api(tags = "商品接口")
+@Api(value = "商品接口")
 @Controller
 @RequestMapping("/item")
 public class TbItemController {

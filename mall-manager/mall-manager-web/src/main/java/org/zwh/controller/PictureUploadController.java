@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "图片更新接口")
+@Api(value = "图片更新接口")
 @Controller
 public class PictureUploadController {
 	@Autowired

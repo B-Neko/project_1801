@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags="商品规格接口")
+@Api(value = "商品规格接口")
 @Controller
 @RequestMapping("/item/param")
 public class TbItemParamController {
