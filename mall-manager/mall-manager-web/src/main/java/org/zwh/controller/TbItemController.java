@@ -39,7 +39,7 @@ public class TbItemController {
 		  @ApiImplicitParam(name = "page",value = "当前页",dataType = "Integer",defaultValue = "1",paramType="query"),
           @ApiImplicitParam(name = "rows",value = "显示个数",dataType = "Integer",defaultValue = "10",paramType="query")
 	})
-	@RequestMapping(value = "/getItem",method=RequestMethod.GET)
+	@RequestMapping(value = "/getItem",method=RequestMethod.POST)
 	@ResponseBody
 	public EasyUIDataGridResult getTbItemList(@RequestParam(defaultValue = "1") 
 	Integer page
