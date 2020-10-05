@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 import org.zwh.mapper.TbUserMapper;
 import org.zwh.pojo.TbItem;
@@ -25,7 +28,7 @@ import com.github.pagehelper.PageInfo;
 @Service
 public class TbUserServiceImpl implements TbUserService {
 	@Autowired
-	TbUserMapper tbUserMapper;
+	private TbUserMapper tbUserMapper;
 
 //	@Override
 //	public List<TbUser> getTbUSerList(Long roleId) {
@@ -90,6 +93,22 @@ public class TbUserServiceImpl implements TbUserService {
 		}
 	
 		return FjnyResult.ok();
+	}
+
+	@Override
+	public FjnyResult checkLogin(HttpServletRequest request,String username, String password) {
+		TbUserExample example = new TbUserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		criteria.andPasswordEqualTo(password);
+		//criteria.andUserType
+		List<TbUser> list = tbUserMapper.selectByExample(example);
+		System.out.println(list);
+		if (list.isEmpty()) {
+			return FjnyResult.build(500, "账号密码错误");
+		}
+		request.getSession().setAttribute("USER_INFO", list.get(0));
+		return FjnyResult.ok(list.get(0));
 	}
 
 }

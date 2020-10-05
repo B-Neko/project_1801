@@ -41,4 +41,22 @@
 	<context:annotation-config/>
 	<bean class="org.zwh.swaggerconfig.SwaggerConfig"/>
 	<mvc:resources mapping="/swagger/**" location="/swagger/"/>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截所有 -->
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/easyui/**"/>
+			<mvc:exclude-mapping path="/easyui-extensions/**"/>
+			<mvc:exclude-mapping path="/fonts/**"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/sass/**"/>
+			<mvc:exclude-mapping path="/example/**"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/User/dologin"/>
+			<bean class="org.zwh.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

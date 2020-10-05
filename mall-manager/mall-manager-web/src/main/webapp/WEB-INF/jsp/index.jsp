@@ -68,6 +68,13 @@
 					<li id = "item-param-list"  data-url='item-param-list'>规则参数</li>
 				</ul>
 			</div>
+			<div title="订单管理" data-options="iconCls:'fa fa-table'">
+				<ul>
+					<li id = "order-list" data-url='order-list'>订单列表</li>
+					<li id = "orderItem-list"  data-url='orderItem-list'>订单商品列表</li>
+					<li id = "orderShipping-list"  data-url='orderShipping-list'>用户物流列表</li>
+				</ul>
+			</div>
 			<div title="网站内容管理" data-options="iconCls:'fa fa-table'">
 				<ul>
 					<li id = "icontent-category" data-url='${pageContext.request.contextPath}/content-category'>内容分类管理</li>
@@ -82,7 +89,7 @@
 			<div title="Swagger-UI文档" data-options="iconCls:'fa fa-table'">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/swagger/index.html">商家接口文档</a></li>
-				<li><a href="http://localhost:8088/swagger-ui.html">apk接口文档</a></li>
+				<li><a href="http://www.wyj335.xyz:8088/wechatstore-web/swagger-ui.html">apk接口文档</a></li>
 			</ul>				
 			</div>
 		</div>

@@ -35,85 +35,14 @@
 		</ul>
 	</li>
 </div>
-<script>
-var itemParamEdit;
-//页面初始化完毕后执行此方法 
-	$(function() {
-		//初始化类目选择和图片上传器 
-		TT.init({
-			fun : function(node) {
-				//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
-				TT.changeItemParam(node, "itemParamEditTable");
+<!-- <script>
+		var url = "${pageContext.request.contextPath}/item/param/update/"+$("#itemParamEditTable [name=cid]").val();
+		$.post(url,{"paramData":JSON.stringify(params)},function(data){
+			if(data.status == 200){
+				$.messager.alert('提示','更新商品规格成功!',undefined,function(){
+					$(".panel-tool-close").click();
+   					$("#itemParamList").datagrid("reload");
+   				});
 			}
 		});
-	});
-</script>
-<script style="text/javascript">
-	$(function(){
-		TT.initItemCat({
-			fun:function(node){
-			$(".addGroupTr").hide().find(".param").remove();
-				//  判断选择的目录是否已经添加过规格
-			  $.getJSON("${pageContext.request.contextPath}/item/param/query/itemcatid/" + node.id,function(data){
-				  if(data.status == 200 && data.data){
-					  $.messager.alert("提示", "该类目已经添加，请选择其他类目。", undefined, function(){
-						 $("#itemParamEditTable .selectItemCat").click();
-					  });
-					  return ;
-				  }
-				  $(".addGroupTr").show();
-			  });
-			}
-		});
-		
-		$(".addGroup").click(function(){
-			  var temple = $(".itemParameEditTemplate li").eq(0).clone();
-			  $(this).parent().parent().append(temple);
-			  temple.find(".addParam").click(function(){
-				  var li = $(".itemParamEditTemplate li").eq(2).clone();
-				  li.find(".delParam").click(function(){
-					  $(this).parent().remove();
-				  });
-				  li.appendTo($(this).parentsUntil("ul").parent());
-			  });
-			  temple.find(".delParam").click(function(){
-				  $(this).parent().remove();
-			  });
-		 });
-		
-		$("#itemParamEditTable .close").click(function(){
-			$(".panel-tool-close").click();
-		});
-		
-		$("#itemParamEditTable .submit").click(function(){
-			var params = [];
-			var groups = $("#itemParamEditTable [name=group]");
-			groups.each(function(i,e){
-				var p = $(e).parentsUntil("ul").parent().find("[name=param]");
-				var _ps = [];
-				p.each(function(_i,_e){
-					var _val = $(_e).siblings("input").val();
-					if($.trim(_val).length>0){
-						_ps.push(_val);						
-					}
-				});
-				var _val = $(e).siblings("input").val();
-				if($.trim(_val).length>0 && _ps.length > 0){
-					params.push({
-						"group":_val,
-						"params":_ps
-					});					
-				}
-			});
-			var url = "${pageContext.request.contextPath}/item/param/update/"+$("#itemParamEditTable [name=cid]").val();
-			$.post(url,{"paramData":JSON.stringify(params)},function(data){
-				if(data.status == 200){
-					$.messager.alert('提示','更新商品规格成功!',undefined,function(){
-						$(".panel-tool-close").click();
-    					$("#itemParamList").datagrid("reload");
-    				});
-				}
-			});
-		});
-	});
-</script>
+</script> -->

@@ -61,7 +61,7 @@ public class TbItemController {
 	}
 	
 	@ApiIgnore()
-	@RequestMapping("/cat/list")
+	@RequestMapping(value = "/cat/list")
 	@ResponseBody
 	public List<EasyUITreeNodeBean> getItemCatList(@RequestParam(value = "id",defaultValue = "0") long parentId) {
 		System.out.println("parentId:" + parentId);
@@ -70,7 +70,7 @@ public class TbItemController {
 	
 	@ApiOperation(value = "根据id查看商品描述")
 	@ApiImplicitParam(name = "id",value = "商品id",dataType = "Long",paramType = "path")
-	@RequestMapping(value = "/query/item-desc/{id}",method=RequestMethod.POST)
+	@RequestMapping(value = "/query/item-desc/{id}",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult getTbItemDesc(@PathVariable Long id) {
 		return tbItemDescService.getTbResultDesc(id);
@@ -97,7 +97,7 @@ public class TbItemController {
 	
 	@ApiOperation(value = "根据id上架商品")
 	@ApiImplicitParam(name = "ids",value = "商品id集合",dataType = "List",paramType = "query")
-	@RequestMapping(value = "/putUp",method=RequestMethod.GET)
+	@RequestMapping(value = "/putUp",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult putUpTbItem(@RequestParam("ids") List<Long> ids) {
 		return tbItemService.putUpTbItem(ids);
@@ -105,7 +105,7 @@ public class TbItemController {
 	
 	@ApiOperation(value = "根据id下架商品")
 	@ApiImplicitParam(name = "ids",value = "商品id集合",dataType = "List",paramType = "query")
-	@RequestMapping(value = "/putDown",method=RequestMethod.GET)
+	@RequestMapping(value = "/putDown",method=RequestMethod.POST)
 	@ResponseBody
 	public FjnyResult putDownTbItem(@RequestParam("ids") List<Long> ids) {
 		return tbItemService.putDownTbItem(ids);

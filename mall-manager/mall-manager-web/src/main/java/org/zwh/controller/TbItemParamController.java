@@ -40,7 +40,7 @@ public class TbItemParamController {
 	//查询类目是否存在规格模板
 	@ApiOperation(value = "查询类目是否存在规格模板")
 	@ApiImplicitParam(name = "itemCatId",value = "规格id",dataType = "Long",paramType = "path")
-	@RequestMapping(value = "/query/itemcatid/{itemCatId}",method=RequestMethod.POST)
+	@RequestMapping(value = "/query/itemcatid/{itemCatId}",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult checkParam(@PathVariable Long itemCatId) {		
 		return tbItemParamService.checkParam(itemCatId);

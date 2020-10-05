@@ -2,7 +2,9 @@ package org.zwh.service;
 
 import java.util.List;
 
-import org.zwh.pojo.TbUser;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpRequest;
 import org.zwh.utils.EasyUIDataGridResult;
 import org.zwh.utils.FjnyResult;
 
@@ -15,5 +17,7 @@ public interface TbUserService {
 	EasyUIDataGridResult getTbUserList(Integer page, Integer rows);
 
 	FjnyResult updateTbUser(List<Long> ids);
+	
+	FjnyResult checkLogin(HttpServletRequest request,String username,String password);
 	
 }

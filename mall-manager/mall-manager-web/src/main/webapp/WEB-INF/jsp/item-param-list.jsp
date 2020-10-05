@@ -1,151 +1,171 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<div class="super-theme-example">
-	<div style="height: 350px;">
-		<table id="itemParamList"></table>
-	</div>
-	<br/>
-	<br/>
-	<div id="itemEditWindow" class="easyui-window" title="商品编辑"
-		style="width: 80%; height: 80%;"
-		data-options="iconCls:'icon-save',modal:true,closed:'true',href:'/item-param-edit'">
-	</div>
-</div>
-	<script type="text/javascript">
-		$('#itemParamList').datagrid({
-				url: 'item/param/list',
-				fit: true,
-				pagination: true,
-				fitColumns: true,
-				toolbar: [
-					{
-						text: '添加',
-						iconCls: 'fa fa-plus',
-						handler: function(){
-							TT.createWindow({url:'item-param-add'});
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<div class="super-theme-example">
+			<div style="height: 350px;">
+				<table id="itemParamList"></table>
+			</div>
+			<br /><br/>
+		</div>
+<script>
+$('#itemParamList').datagrid({
+	url: '${pageContext.request.contextPath}/item/param/list',
+	fit: true,
+	pagination: true,
+	fitColumns: true,
+	toolbar: [{
+		text: '添加',
+		iconCls: 'fa fa-plus',
+		handler: function() {
+			TT.createWindow({
+        		url : "${pageContext.request.contextPath}/item-param-add",
+        	});
+		}
+	}, {
+		text: '编辑',
+		iconCls: 'fa fa-edit',
+		handler: function() {
+			/* var ids = getSelectionsIds();
+			//判斷如果未選定 不執行 提示
+			if (ids.length == 0) {
+				$.messager.alert('提示', '必须选择一个商品才能编辑!');
+				return;
+			}
+			//判斷如果多行數據 提示：只能選擇一個商品
+			if (ids.indexOf(',') > 0) {
+				$.messager.alert('提示', '只能选择一个商品!');
+				return;
+			}
+			//进行数据回显
+			$('#itemParamList').window({
+				onLoad : function() {
+					var data = $("#itemParamList").datagrid("getSelections")[0];
+					$('#itemParamEditTable').form('load',data);
+					//将商品描述进行显示
+					$.getJSON("${pageContext.request.contextPath}/item/query/item-desc/" + data.id,function(result){
+						if(result.status == 200){
+							 itemParamEdit.html(result.data.itemDesc); 
 						}
-					
-					},{
-						text: '编辑',
-						iconCls: 'fa fa-edit',
-						handler: function(){
-							var ids = getSelections();
-							//判断如果未选定,不执行,提示
-							if(ids.length == 0){
-								$.messager.alert('提示',"必须选择一个商品");
-								return;
-							}
-							//如果选的多行数据,提示,只能选择一个商品
-							if(ids.indexOf(',') > 0){
-								$.messager.alert('提示',"只能选择一个商品");
-								return;
-							}
-							
-							
-							//进行数据回显
-							$('#itemEditWindow').window({
-								
-								onLoad:function(){ 
-									var data = $("#itemParamList").datagrid("getSelections")[0];
-									$('#itemParamEditTable').form('load',data); 
-									
-									//将商品描述进行显示
-									$.getJSON("${pageContext.request.contextPath}/item/param/query/itemparam-desc/"+data.id,function(result){
-										if(result.status == 200){
-											//itemEditEditor.html(result.data.itemDesc);
-											itemParamEdit.html(result.data)
-										}
-									});
-									
-									
-									TT.init({
-										"itemCatId" : data.itemCatId,
-										"paramData" : data.paramData,
-										fun:function(node){}
-									});
-								} 
-							}).window('open');
+					});
+				 	TT.init({
+						"pics" : data.image,
+						"cid" : data.cid,
+						fun : function(node) {
 						}
-					
-					},{
-						text: '删除',
-						iconCls: 'fa fa-remove',
-						handler: function(){
-							var ids = getSelections();
-							if(ids.length == 0){
-								$.messager.alert('提示',"必须选择一个或多个商品规格");
-								return;
-							}
-							//提示是否删除数据
-							$.messager.confirm('确认', '您确认想要删除ID为'+ids+'商品规格吗?', function(r) {
-								if(r) {
-									//进行post跟服务端交互
-									var params = {"ids":ids};
-									$.post("${pageContext.request.contextPath}/item/delete2",params,function(data){
-										if(data.status == 200){
-											$.messager.alert('提示','删除商品规格成功!',undefined,function(){
-												$("#itemParamList").datagrid("reload");
-											});									
-										}else{
-											alert("删除失败");
-										}
-									});
-								}
-							});
-						}
-					}
-				],
-				height: 400,
-				columns: [
-					[
-						{
-							field: 'id',
-							title: 'ID',
-							width: 60
-						},{
-							field: 'itemCatId',
-							title: '类目ID',
-							width: 60
-						},{
-							field: 'itemCatName',
-							title: '类目名称',
-							width: 100
-						},{
-							field: 'paramData',
-							title: '规格',
-							width: 300,
-							formatter:formatItemParamData
-						},{
-							field: 'created',
-							title: '创建时间',
-							width: 130,
-							formatter:TT.formateDateTime
-						},{
-							field: 'updated',
-							title: '更新时间',
-							width: 130,
-							formatter:TT.formateDateTime
-						}
-					]
-				]
-			});
-	function formatItemParamData(val,index){
-		var json = JSON.parse(val);
+					}); 
+				}
+			}).window('open'); */
+		}
+	},{
+		text: '删除',
+		iconCls: 'fa fa-remove',
+		handler: function() {
+			var ids = getSelectionsIds();
+        	if(ids.length == 0){
+        		$.messager.alert('提示','未选中商品规格!');
+        		return ;
+        	}
+        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的商品规格吗？',function(r){
+        	    if (r){
+        	    	var params = {"ids":ids};
+                	$.post("${pageContext.request.contextPath}/item/param/delete",params, function(data){
+            			if(data.status == 200){
+            				$.messager.alert('提示','删除商品规格成功!',undefined,function(){
+            					$("#itemParamList").datagrid("reload");
+            				});
+            			}
+            		});
+        	    }
+        	});
+		}
+	}],
+
+	height: 400,
+	columns: [
+		[{
+			field: 'id',
+			title:'ID',
+			width: 60
+		}, {
+			field: 'itemCatId',
+			title: '商品类目ID',
+			width: 100
+		}, {
+			field: 'itemCatName',
+			title: '商品类目',
+			width: 100
+		},{
+			field: 'paramData',
+			title: '规格(只显示分组名称)',
+			width: 300,
+			formatter:formatItemParamData
+		},{
+			field: 'created',
+			title: '创建日期',
+			width: 130,
+			formatter:TT.formatDateTime
+		},{
+			field: 'updated',
+			title: '更新日期',
+			width: 130,
+			formatter:TT.formatDateTime
+		}
+		]
+	]
+});
+	function formatItemParamData(value , index){
+		var json = JSON.parse(value);
 		var array = [];
 		$.each(json,function(i,e){
 			array.push(e.group);
-		})
+		});
 		return array.join(",");
-		
 	}
-	function getSelections(){
-		var itemList = $("#itemParamList");
-		var sels = itemList.datagrid("getSelections");
-		var ids =[];
-		for(var i in sels){
-			ids.push(sels[i].id);
-		}
-		ids = ids.join(",");
-		return ids;
-	}
+
+    function getSelectionsIds(){
+    	var itemList = $("#itemParamList");
+    	var sels = itemList.datagrid("getSelections");
+    	var ids = [];
+    	for(var i in sels){
+    		ids.push(sels[i].id);
+    	}
+    	ids = ids.join(",");
+    	return ids;
+    }
+    
+    var itemParamListToolbar = [{
+        text:'新增',
+        iconCls:'fa fa-plus',
+        handler:function(){
+        	TT.createWindow({
+        		url : "${pageContext.request.contextPath}/item-param-add",
+        	});
+        }
+    },{
+        text:'编辑',
+        iconCls:'fa fa-edit',
+        handler:function(){
+        	$.messager.alert('提示','该功能未实现!');
+        }
+    },{
+        text:'删除',
+        iconCls:'fa fa-remove',
+        handler:function(){
+        	var ids = getSelectionsIds();
+        	if(ids.length == 0){
+        		$.messager.alert('提示','未选中商品规格!');
+        		return ;
+        	}
+        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的商品规格吗？',function(r){
+        	    if (r){
+        	    	var params = {"ids":ids};
+                	$.post("${pageContext.request.contextPath}/item/param/delete",params, function(data){
+            			if(data.status == 200){
+            				$.messager.alert('提示','删除商品规格成功!',undefined,function(){
+            					$("#itemParamList").datagrid("reload");
+            				});
+            			}
+            		});
+        	    }
+        	});
+        }
+    }];
 </script>
