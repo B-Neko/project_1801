@@ -89,12 +89,13 @@ $(function() {
 	$("#logout").on('click', function() {
 		$.messager.confirm('提示', '确定退出系统？', function(r) {
 			if(r) {
-				   $.get("${pageContext.request.contextPath}/User/logout",null,
+			//mall-manager-web
+				   $.get("/mall-manager-web/User/logout",null,
     	    		function(data,status){
     	    			console.log(data);
     	    			console.log(status);
     	    			if(status=='success'){
-    	    				window.location.href="${pageContext.request.contextPath}/login";
+    	    				window.location.href="/mall-manager-web/login";
     	    			}else{
     	    				$.messager.alert('错误',"退出失败，请重试");
     	    			}

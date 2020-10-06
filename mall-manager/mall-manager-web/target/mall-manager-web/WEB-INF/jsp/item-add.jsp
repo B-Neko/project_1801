@@ -122,7 +122,7 @@
 		itemAddEditor.sync();
 		
 		//ajax的post方式提交表单
-		alert($("#itemAddForm").serialize());
+	/* 	alert($("#itemAddForm").serialize()); */
 		$.post("${pageContext.request.contextPath}/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$("#dgTbItem").datagrid("reload");

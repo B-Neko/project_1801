@@ -48,7 +48,7 @@ var contentListToolbar = [{
     		return ;
     	}
     	TT.createWindow({
-			url : "/content-add"
+			url : "${pageContext.request.contextPath}/content-add"
 		}); 
     }
 },{
@@ -65,7 +65,7 @@ var contentListToolbar = [{
     		return ;
     	}
 		TT.createWindow({
-			url : "/content-edit",
+			url : "${pageContext.request.contextPath}/content-edit",
 			onLoad : function(){
 				var data = $("#contentList").datagrid("getSelections")[0];
 				$("#contentEditForm").form("load",data);

@@ -4,7 +4,7 @@
 			<div style="height: 250px;">
 				<table id="TbOrder"></table>
 			</div>
-<div id="orderShowWindow" class="easyui-window" title="订单详情展示" style="width:70%;height:80%;"
+<div id="orderShowWindow" class="easyui-window" title="订单详情展示" style="width:50%;height:40%;"
     data-options="iconCls:'icon-save',modal:true,closed:'true',href:'${pageContext.request.contextPath}/order-show'"></div>
 </div>
 	<script type="text/javascript">
@@ -24,10 +24,10 @@
 		        			    columns:[[    
 		        			        {field:'id',title:'订单商品ID',width:100},    
 		        			        {field:'itemId',title:'商品ID',width:100},    
-		        			        {field:'title',title:'商品标题',width:100},    
+		        			        {field:'title',title:'商品标题',width:150},    
 		        			        {field:'num',title:'数量',width:50},    
 		        			        {field:'price',title:'价格',width:50,align:'right'},
-		        			        {field:'pic_path',title:'图片',width:120},
+		        			        {field:'pic_path',title:'图片',width:100},
 		        			        {field:'status',title:'状态',width:50}
 		        			    ]]    
 		        			});  

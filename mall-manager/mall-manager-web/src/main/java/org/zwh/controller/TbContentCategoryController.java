@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-@Api(value = "内容分类接口")
+@Api(value = "内容接口")
 @Controller
 @RequestMapping("/content/category")
 public class TbContentCategoryController {
@@ -41,7 +41,7 @@ public class TbContentCategoryController {
 		@ApiImplicitParam(name="parenId",value = "分类父id",dataType = "Long",paramType = "query"),
 		@ApiImplicitParam(name="name",value = "分类名称",dataType = "String",paramType = "query")
 	})
-	@RequestMapping(value = "/create",method=RequestMethod.POST)
+	@RequestMapping(value = "/create",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult createNode(@RequestParam(value="parentId") Long parentId, @RequestParam(value="name")String name) {
 		return tbContentCategoryService.createNode(parentId,name);
@@ -51,7 +51,7 @@ public class TbContentCategoryController {
 		@ApiImplicitParam(name="parenId",value = "分类id",dataType = "Long",paramType = "query"),
 		@ApiImplicitParam(name="name",value = "分类名称",dataType = "String",paramType = "query")
 	})
-	@RequestMapping(value = "/update",method=RequestMethod.POST)
+	@RequestMapping(value = "/update",method=RequestMethod.GET)
 	@ResponseBody
 	public FjnyResult updateNodeName(@RequestParam(value="id")Long id,@RequestParam(value="name")String name) {
 		return tbContentCategoryService.updateNodeName(id,name);

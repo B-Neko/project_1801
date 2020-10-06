@@ -90,12 +90,12 @@ $(function() {
 		$.messager.confirm('提示', '确定退出系统？', function(r) {
 			if(r) {
 			//mall-manager-web
-				   $.get("/User/logout",null,
+				   $.get("/mall-manager-web/User/logout",null,
     	    		function(data,status){
     	    			console.log(data);
     	    			console.log(status);
     	    			if(status=='success'){
-    	    				window.location.href="/login";
+    	    				window.location.href="/mall-manager-web/login";
     	    			}else{
     	    				$.messager.alert('错误',"退出失败，请重试");
     	    			}

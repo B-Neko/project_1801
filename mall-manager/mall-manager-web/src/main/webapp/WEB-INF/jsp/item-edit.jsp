@@ -95,7 +95,7 @@
 				//ajax的post方式提交表单
 				$("#itemEditForm").serialize()
 				//将表单序列号为key - value形式的字符串
-				alert($("#itemEditForm").serialize());
+				//alert($("#itemEditForm").serialize());
 				$.post("${pageContext.request.contextPath}/item/update", $("#itemEditForm").serialize(), function(
 						data) {
 					if (data.status == 200) {

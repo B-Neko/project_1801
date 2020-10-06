@@ -25,7 +25,7 @@ var TT = FJNY = {
 		//指定上传文件参数名称
 		filePostName  : "uploadFile",
 		//指定上传文件请求的url。
-		uploadJson : '/pic/upload',
+		uploadJson : '/mall-manager-web/pic/upload',
 		//上传类型，分别为image、flash、media、file
 		dir : "image"
 	},
@@ -130,7 +130,7 @@ var TT = FJNY = {
     			    onOpen : function(){
     			    	var _win = this;
     			    	$("ul",_win).tree({
-    			    		url:'/item/cat/list',
+    			    		url:'/mall-manager-web/item/cat/list',
     			    		animate:true,
     			    		onClick : function(node){
     			    			if($(this).tree("isLeaf",node.target)){

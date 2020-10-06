@@ -17,7 +17,7 @@ import org.zwh.utils.PictureResult;
 public class PictureUploadServiceImpl implements PictureUploadService {
 	
 	
-	String host = "60.205.152.139";
+	String host = "39.97.66.160";
 	int port = 21;
 	String username = "rrrxr";
 	String password = "westos321";
@@ -54,8 +54,9 @@ public class PictureUploadServiceImpl implements PictureUploadService {
 			String filePath = datetime.toString("yyyy/MM/dd");	
 			String filename = IDUtils.genImageName()+ext;		
 			InputStream input = uploadfile.getInputStream();
-			FtpUtil.uploadFile(host,port,username,password,"/",filePath,filename,input);
-			String url = "http://60.205.152.139:8088"+filePath+"/"+filename;
+			boolean uploadFile2 = FtpUtil.uploadFile(host,port,username,password,"/lllty",filePath,filename,input);
+			System.out.println(uploadFile2);
+			String url = "http://39.97.66.160:8080/photos/"+filePath+"/"+filename;
 			result.setError(0);
 			result.setUrl(url);		
 

@@ -25,7 +25,8 @@ public class PictureUploadController {
 	@ApiImplicitParam(name = "uploadFile",value = "图片文件")
 	@RequestMapping(value = "/pic/upload",method = RequestMethod.POST)
 	@ResponseBody
-	public String upload(MultipartFile uploadFile) {	
+	public String upload(MultipartFile uploadFile) {
+		System.out.println("图片请求到这了 ");
 		PictureResult result = pictureUploadservice.pictureUpload(uploadFile);
 		return JsonUtils.objectToJson(result);	
 	}

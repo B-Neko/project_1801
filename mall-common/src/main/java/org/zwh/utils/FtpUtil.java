@@ -137,8 +137,8 @@ public class FtpUtil {
 	
 	public static void main(String[] args) {
 		try {  
-	        FileInputStream in=new FileInputStream(new File("D:\\StudentWork\\a.jpg"));  
-	        boolean flag = uploadFile("60.205.152.139", 21, "rrrxr", "westos321", "/lllty","/2020/06/17", "zwh.jpg", in);  
+	        FileInputStream in=new FileInputStream(new File("C:\\Users\\zwh\\Pictures\\鬼刀\\01.jpg"));  
+	        boolean flag = uploadFile("39.97.66.160", 21, "rrrxr", "westos321", "/lllty","/2020/06/17", "zwh.jpg", in);  
 	        System.out.println(flag);
 	    } catch (FileNotFoundException e) {  
 	        e.printStackTrace();  
