@@ -254,16 +254,28 @@
 						title: '订单ID',
 						width: 100,
 						sortable: true
-					}, {
+					},{
 						field: 'payment',
 						title: '实付金额',
 						width: 100,
 						sortable: true
-					}, {
+					},{
 						field: 'status',
 						title: '状态',
 						width: 100,
 						formatter:TT.formatOrderStatus,
+						sortable: true
+					},{
+						field: 'createTime',
+						title: '状态',
+						width: 100,
+						formatter:TT.formatDateTime,
+						sortable: true
+					},{
+						field: 'updateTime',
+						title: '状态',
+						width: 100,
+						formatter:TT.formatDateTime,
 						sortable: true
 					}]
 				]
